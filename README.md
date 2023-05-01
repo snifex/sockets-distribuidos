@@ -45,7 +45,7 @@ deactivate
 
 [CustomTkinter](https://github.com/TomSchimansky/CustomTkinter) - Librería de Python mejorada para interfaces gráficas para usuarios
 
-### Integrantes
+## Integrantes
 
 - **Nuñez Bello Gerardo Gonzalo** - [snifex](https://github.com/snifex)
 - **Ruvalcaba Barajas Victor Raul** - [CorvoHyatt](https://github.com/CorvoHyatt)
