@@ -1,5 +1,3 @@
-# server.py
-
 import socket
 import struct
 
@@ -45,24 +43,28 @@ def receive_file(sck: socket.socket, filename):
         conn.sendall('No se encontró el archivo solicitado'.encode("utf-8"))
 
 
-with socket.create_server(("localhost", 6190)) as server:
-    #Ponemos en estado de escucha
-    print("Esperando al cliente...")
+def mount_server():
+    with socket.create_server(("localhost", 6190)) as server:
+        #Ponemos en estado de escucha
+        print("Esperando al cliente...")
 
-    #Aceptamos la conexión
-    conn, address = server.accept()
-    print(f"{address[0]}:{address[1]} conectado.")
-    data = conn.recv(1024)
+        #Aceptamos la conexión
+        global conn
+        conn, address = server.accept()
+        print(f"{address[0]}:{address[1]} conectado.")
+        data = conn.recv(1024)
 
-    if not data:
-        print('No se recibió la solicitud del archivo')
-        conn.sendall('No se recibió la solicitud del archivo'.encode("utf-8"))
-        exit()
-    
-    #Obtenemos el nombre del archivo
-    filename = data.decode()
+        if not data:
+            print('No se recibió la solicitud del archivo')
+            conn.sendall('No se recibió la solicitud del archivo'.encode("utf-8"))
+            exit()
+        
+        #Obtenemos el nombre del archivo
+        filename = data.decode()
 
-    print("Recibiendo archivo...")
-    receive_file(conn, f"new_{filename}")
-    print("Archivo recibido.")
+        print("Recibiendo archivo...")
+        receive_file(conn, f"new_{filename}")
+        print("Archivo recibido.")
 
+if __name__ == "__main__":
+    mount_server()
