@@ -72,7 +72,7 @@ frame.pack(pady=20, padx=60, fill="both", expand=True)
 #Creamos los widgets necesarios
 path_label = CTkLabel(master=frame, justify=LEFT, text="Ruta del archivo:", font=myFont)
 path_label.pack(pady=10, padx= 10)
-path_entry = CTkEntry(master=frame, width= 500, textvariable=user_input)
+path_entry = CTkEntry(master=frame, width= 500)
 path_entry.pack(pady=10,padx=10)
 browse_button = CTkButton(master=frame, command=browse_file, text="Buscar archivo", font=("Arial",12))
 browse_button.pack(pady=10,padx=10)
