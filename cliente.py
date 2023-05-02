@@ -76,7 +76,7 @@ path_entry = CTkEntry(master=frame, width= 500)
 path_entry.pack(pady=10,padx=10)
 browse_button = CTkButton(master=frame, command=browse_file, text="Buscar archivo", font=("Arial",12))
 browse_button.pack(pady=10,padx=10)
-send_button = CTkButton(master=frame, command=send_file_button, text="Enviar archivo", font=("Arial",12), state="disabled")
+send_button = CTkButton(master=frame, command=send_file_button, text="Enviar archivo", font=("Arial",12))
 send_button.pack(pady=10,padx=10)
 
 
