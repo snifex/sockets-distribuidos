@@ -1,7 +1,6 @@
 import socket
 import struct
 
-
 def receive_file_size(sck: socket.socket):
     #Función que recibe los bytes indicados del archivo a recibir
     
