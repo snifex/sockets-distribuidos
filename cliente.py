@@ -4,15 +4,21 @@ import os
 import socket
 import struct
 
+
 def browse_file():
+    #Con esta función mandamos a buscar el archivo con el gestor de windows
     global filename
     #Abrimos un filedialog para buscar en el directorio
     filename = filedialog.askopenfilename()
+    # Procesamos la dirección quedandonos con al dirección relativa del archivo
     filename = filename.split("/")[-1]
+    # Ponemos el nombre en el text viewer
     path_entry.delete(0,END)
     path_entry.insert(0,filename)
+        
 
 def send_file_button():
+    # Función que manda el archivo ya preseleccionado
 
     def send_file(sck: socket.socket, filename):
         # Obtener el tamaño del archivo a enviar.
@@ -66,14 +72,16 @@ frame.pack(pady=20, padx=60, fill="both", expand=True)
 #Creamos los widgets necesarios
 path_label = CTkLabel(master=frame, justify=LEFT, text="Ruta del archivo:", font=myFont)
 path_label.pack(pady=10, padx= 10)
-path_entry = CTkEntry(master=frame, width= 500)
+path_entry = CTkEntry(master=frame, width= 500, textvariable=user_input)
 path_entry.pack(pady=10,padx=10)
 browse_button = CTkButton(master=frame, command=browse_file, text="Buscar archivo", font=("Arial",12))
 browse_button.pack(pady=10,padx=10)
-send_button = CTkButton(master=frame, command=send_file_button, text="Enviar archivo", font=("Arial",12))
+send_button = CTkButton(master=frame, command=send_file_button, text="Enviar archivo", font=("Arial",12), state="disabled")
 send_button.pack(pady=10,padx=10)
+
 
 
 if __name__ == "__main__":
     app.mainloop()
+    
     
